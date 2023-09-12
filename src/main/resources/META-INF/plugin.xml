@@ -10,9 +10,25 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow factoryClass="com.github.gaoxiang15125.myideaplugin.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <applicationService serviceImplementation="com.github.gaoxiang15125.myideaplugin.services.impl.DataProcessor"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.gaoxiang15125.myideaplugin.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
+        <listener class="com.github.gaoxiang15125.myideaplugin.listeners.DomainActiveListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
     </applicationListeners>
+
+    <actions>
+        <action class="com.github.gaoxiang15125.myideaplugin.listeners.HelloWorldActiveListener" id="myideaplugin.HelloWorld"
+                text="HelloWorld" description="第一个动作监听器">
+            <add-to-group group-id="HelpMenu" anchor="first"/>
+<!--            <keyboard-shortcut first-keystroke="shift meta A" keymap="$default"/>-->
+        </action>
+        <action id="MyIDEAPlugin.GetterAndSetter"
+                class="com.github.gaoxiang15125.myideaplugin.listeners.com.github.gaoxiang15125.myideaplugin.listeners.GetterAndSetter"
+                text="自动生成GetterSetter" description="生成GetterSetter方法">
+            <add-to-group group-id="HelpMenu" anchor="first"/>
+        </action>
+        <action id="MyIDEAPlugin" class="com.github.gaoxiang15125.myideaplugin.listeners.PsiNavigationAction"
+                text="PsiNavigation" description="psiNavigation 实现类"/>
+    </actions>
 </idea-plugin>

@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.changelog) // Gradle Changelog Plugin
     alias(libs.plugins.qodana) // Gradle Qodana Plugin
     alias(libs.plugins.kover) // Gradle Kover Plugin
+    alias(libs.plugins.grammarkit)
 }
 
 group = properties("pluginGroup").get()
@@ -62,6 +63,12 @@ koverReport {
             onCheck = true
         }
     }
+}
+
+grammarKit {
+    jflexRelease.set("1.9.1")
+    grammarKitRelease.set("2021.1.2")
+    intellijRelease.set("203.7717.81")
 }
 
 tasks {
